@@ -17,6 +17,7 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.EnumProperty;
 import com.innersloth.amogus.util.Properties;
+import net.minecraft.util.function.BooleanBiFunction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
@@ -37,7 +38,9 @@ public class TableBlock extends Block implements Waterloggable {
     public static final EnumProperty<TablePart> TABLE_PART = Properties.TABLE_PART;
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     private static final VoxelShape BOTTOM_SHAPE = Block.createColumnShape(16.0, 0.0, 8.0);
-    private static final Map<Direction, VoxelShape> CORNER_SHAPE = VoxelShapes.createFacingShapeMap(Block.createCuboidShape(0, 0, 0, 8, 8, 8));
+    private static final VoxelShape CORNER_SHAPE_FIRST = Block.createCuboidShape(0, 0, 0, 4, 8, 4);
+    private static final VoxelShape CORNER_SHAPE_SECOND = Block.createCuboidShape(0,0,0,0,0,0);
+    private static final Map<Direction, VoxelShape> CORNER_SHAPE = VoxelShapes.createFacingShapeMap(VoxelShapes.combineAndSimplify(CORNER_SHAPE_FIRST, CORNER_SHAPE_SECOND, BooleanBiFunction.OR));
 
     @Override
     public MapCodec<? extends TableBlock> getCodec() {

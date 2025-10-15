@@ -34,8 +34,7 @@
         ]
       },
       "apply": {
-        "model": "among-us:block/skeld_cafe_table/center_edge",
-        "y": 180
+        "model": "among-us:block/skeld_cafe_table/center_edge"
       }
     },
     {
@@ -54,7 +53,8 @@
         ]
       },
       "apply": {
-        "model": "among-us:block/skeld_cafe_table/center_edge"
+        "model": "among-us:block/skeld_cafe_table/center_edge",
+        "y": 180
       }
     },
     {
@@ -110,26 +110,6 @@
             "type": "double",
             "table_part": "center_edge_side",
             "facing": "north"
-          }
-        ]
-      },
-      "apply": {
-        "model": "among-us:block/skeld_cafe_table/center_edge_side",
-        "y": 180
-      }
-    },
-    {
-      "when": {
-        "OR": [
-          {
-            "type": "bottom",
-            "table_part": "center_edge_side",
-            "facing": "south"
-          },
-          {
-            "type": "double",
-            "table_part": "center_edge_side",
-            "facing": "south"
           }
         ]
       },
@@ -143,6 +123,26 @@
           {
             "type": "bottom",
             "table_part": "center_edge_side",
+            "facing": "south"
+          },
+          {
+            "type": "double",
+            "table_part": "center_edge_side",
+            "facing": "south"
+          }
+        ]
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_table/center_edge_side",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "OR": [
+          {
+            "type": "bottom",
+            "table_part": "center_edge_side",
             "facing": "east"
           },
           {
@@ -194,8 +194,7 @@
         ]
       },
       "apply": {
-        "model": "among-us:block/skeld_cafe_table/center_edge_side_mirrored",
-        "y": 180
+        "model": "among-us:block/skeld_cafe_table/center_edge_side_mirrored"
       }
     },
     {
@@ -214,7 +213,8 @@
         ]
       },
       "apply": {
-        "model": "among-us:block/skeld_cafe_table/center_edge_side_mirrored"
+        "model": "among-us:block/skeld_cafe_table/center_edge_side_mirrored",
+        "y": 180
       }
     },
     {

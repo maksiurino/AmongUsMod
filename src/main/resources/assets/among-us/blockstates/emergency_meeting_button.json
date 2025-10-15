@@ -10,12 +10,47 @@
     },
     {
       "when": {
-        "pressed": true
+        "pressed": true,
+        "facing": "east"
+      },
+      "apply": {
+        "model": "among-us:block/emergency_meeting_button_open",
+        "y": 90
+      }
+    },
+
+    {
+      "when": {
+        "pressed": true,
+        "facing": "north"
       },
       "apply": {
         "model": "among-us:block/emergency_meeting_button_open"
       }
     },
+
+    {
+      "when": {
+        "pressed": true,
+        "facing": "south"
+      },
+      "apply": {
+        "model": "among-us:block/emergency_meeting_button_open",
+        "y": 180
+      }
+    },
+
+    {
+      "when": {
+        "pressed": true,
+        "facing": "west"
+      },
+      "apply": {
+        "model": "among-us:block/emergency_meeting_button_open",
+        "y": 270
+      }
+    },
+
     {
       "when": {
         "current_map": "skeld"

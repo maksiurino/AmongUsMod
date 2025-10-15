@@ -4,6 +4,7 @@ import com.innersloth.amogus.block.custom.enums.AmongUsMaps;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.EnumProperty;
@@ -15,6 +16,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 public class EmergencyMeetingButtonBlock extends TransparentHorizontalFacingBlock {
     public static final MapCodec<EmergencyMeetingButtonBlock> CODEC = createCodec(EmergencyMeetingButtonBlock::new);
@@ -35,7 +37,7 @@ public class EmergencyMeetingButtonBlock extends TransparentHorizontalFacingBloc
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(PRESSED, CURRENT_MAP);
+        builder.add(PRESSED, CURRENT_MAP, FACING);
     }
 
     @Override
@@ -49,5 +51,11 @@ public class EmergencyMeetingButtonBlock extends TransparentHorizontalFacingBloc
             world.setBlockState(pos, state.cycle(PRESSED));
         }
         return ActionResult.SUCCESS;
+    }
+
+    @Nullable
+    @Override
+    public BlockState getPlacementState(ItemPlacementContext ctx) {
+        return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
     }
 }
