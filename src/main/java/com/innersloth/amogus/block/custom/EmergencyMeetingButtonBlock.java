@@ -12,9 +12,11 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.function.BooleanBiFunction;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
@@ -25,7 +27,8 @@ public class EmergencyMeetingButtonBlock extends TransparentBlock {
     public static final MapCodec<EmergencyMeetingButtonBlock> CODEC = createCodec(EmergencyMeetingButtonBlock::new);
     public static final BooleanProperty PRESSED = BooleanProperty.of("pressed");
     public static final EnumProperty<AmongUsMaps> CURRENT_MAP = EnumProperty.of("current_map", AmongUsMaps.class);
-    private static final VoxelShape BLOCK_SHAPE = Block.createColumnShape(16.0, 0.0, 16.0);
+    private static final VoxelShape COLUMN_SHAPE = Block.createColumnShape(16.0, 0.0, 10.0);
+    private static final VoxelShape BLOCK_SHAPE = VoxelShapes.combineAndSimplify(COLUMN_SHAPE, Block.createColumnShape(12.0, 10.0, 16.0), BooleanBiFunction.OR);
 
     private final int pressTicks;
 
