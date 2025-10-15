@@ -1,9 +1,7 @@
 package com.innersloth.amogus.block.custom;
 
 import com.innersloth.amogus.block.custom.enums.AmongUsMaps;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundCategory;
