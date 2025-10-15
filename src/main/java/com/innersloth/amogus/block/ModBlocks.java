@@ -23,7 +23,7 @@ public class ModBlocks {
     public static final Block SKELD_CAFETERIA_TILES = register(
             "skeld_cafeteria_tiles",
             Block::new,
-            AbstractBlock.Settings.create().sounds(BlockSoundGroup.STONE),
+            AbstractBlock.Settings.create().sounds(BlockSoundGroup.STONE).jumpVelocityMultiplier(0.F),
             true
     );
     public static final Block SKELD_CAFETERIA_TABLE = register(

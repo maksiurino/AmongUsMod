@@ -26,6 +26,7 @@ public class ModItemGroups {
             itemGroup.add(ModBlocks.SKELD_CAFETERIA_TILES.asItem());
             itemGroup.add(ModBlocks.SKELD_CAFETERIA_TABLE.asItem());
             itemGroup.add(ModBlocks.EMERGENCY_MEETING_BUTTON.asItem());
+            itemGroup.add(ModBlocks.SKELD_CAFETERIA_BENCH.asItem());
         });
     }
 }
