@@ -14,11 +14,14 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.function.BooleanBiFunction;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Map;
 
 public class EmergencyMeetingButtonBlock extends TransparentHorizontalFacingBlock {
     public static final MapCodec<EmergencyMeetingButtonBlock> CODEC = createCodec(EmergencyMeetingButtonBlock::new);
@@ -26,7 +29,7 @@ public class EmergencyMeetingButtonBlock extends TransparentHorizontalFacingBloc
     public static final EnumProperty<AmongUsMaps> CURRENT_MAP = EnumProperty.of("current_map", AmongUsMaps.class);
     private static final VoxelShape COLUMN_SHAPE = Block.createColumnShape(16.0, 0.0, 10.0);
     private static final VoxelShape BLOCK_SHAPE_UNPOWERED = VoxelShapes.combineAndSimplify(COLUMN_SHAPE, Block.createColumnShape(12.0, 10.0, 16.0), BooleanBiFunction.OR);
-    private static final VoxelShape BLOCK_SHAPE_POWERED = VoxelShapes.combineAndSimplify(COLUMN_SHAPE, Block.createCuboidShape(2, 10, 14, 14, 22, 20), BooleanBiFunction.OR);
+    private static final Map<Direction, VoxelShape> BLOCK_SHAPE_POWERED = VoxelShapes.createFacingShapeMap(VoxelShapes.combineAndSimplify(COLUMN_SHAPE, Block.createCuboidShape(2, 10, 14, 14, 22, 20), BooleanBiFunction.OR));
 
     @Override
     public MapCodec<? extends EmergencyMeetingButtonBlock> getCodec() {
@@ -45,7 +48,7 @@ public class EmergencyMeetingButtonBlock extends TransparentHorizontalFacingBloc
 
     @Override
     protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return state.get(PRESSED) ? BLOCK_SHAPE_POWERED : BLOCK_SHAPE_UNPOWERED;
+        return state.get(PRESSED) ? (VoxelShape)BLOCK_SHAPE_POWERED.get(state.get(FACING)) : BLOCK_SHAPE_UNPOWERED;
     }
 
     @Override

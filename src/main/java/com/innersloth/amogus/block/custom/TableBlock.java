@@ -41,6 +41,7 @@ public class TableBlock extends Block implements Waterloggable {
     private static final VoxelShape CORNER_SHAPE_FIRST = Block.createCuboidShape(0, 0, 0, 4, 8, 4);
     private static final VoxelShape CORNER_SHAPE_SECOND = Block.createCuboidShape(0,0,0,0,0,0);
     private static final Map<Direction, VoxelShape> CORNER_SHAPE = VoxelShapes.createFacingShapeMap(VoxelShapes.combineAndSimplify(CORNER_SHAPE_FIRST, CORNER_SHAPE_SECOND, BooleanBiFunction.OR));
+    private static final Map<Direction, VoxelShape> CENTER_EDGE_SIDE_SHAPE = VoxelShapes.createFacingShapeMap(Block.createCuboidShape(0, 0, 0, 16, 8, 8));
 
     @Override
     public MapCodec<? extends TableBlock> getCodec() {
@@ -66,6 +67,7 @@ public class TableBlock extends Block implements Waterloggable {
     protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return switch ((TablePart)state.get(TABLE_PART)) {
             case CORNER -> (VoxelShape)CORNER_SHAPE.get(state.get(FACING));
+            case CENTER_EDGE_SIDE, CENTER_EDGE_SIDE_MIRRORED -> (VoxelShape) CENTER_EDGE_SIDE_SHAPE.get(state.get(FACING));
             default -> BOTTOM_SHAPE;
         };
     }
@@ -73,18 +75,7 @@ public class TableBlock extends Block implements Waterloggable {
     @Nullable
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        BlockPos blockPos = ctx.getBlockPos();
-        BlockState blockState = ctx.getWorld().getBlockState(blockPos);
-        if (blockState.isOf(this)) {
-            return blockState.with(TYPE, TableType.DOUBLE).with(WATERLOGGED, false);
-        } else {
-            FluidState fluidState = ctx.getWorld().getFluidState(blockPos);
-            BlockState blockState2 = this.getDefaultState().with(TYPE, TableType.BOTTOM).with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
-            Direction direction = ctx.getSide();
-            return direction != Direction.DOWN && (direction == Direction.UP || !(ctx.getHitPos().y - blockPos.getY() > 0.5))
-                    ? blockState2
-                    : blockState2.with(TYPE, TableType.TOP);
-        }
+        return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite()).with(TABLE_PART, TablePart.CENTER).with(TYPE, TableType.BOTTOM);
     }
 
     @Override

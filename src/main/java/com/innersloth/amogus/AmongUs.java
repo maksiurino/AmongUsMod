@@ -1,6 +1,7 @@
 package com.innersloth.amogus;
 
 import com.innersloth.amogus.block.ModBlocks;
+import com.innersloth.amogus.entity.ModEntities;
 import com.innersloth.amogus.item.ModItemGroups;
 import net.fabricmc.api.ModInitializer;
 
@@ -15,6 +16,7 @@ public class AmongUs implements ModInitializer {
 	public void onInitialize() {
 		LOGGER.info("Hello Fabric world!");
 		ModBlocks.initialize();
+		ModEntities.registerModEntities();
 		ModItemGroups.registerModItemGroups();
 	}
 }
