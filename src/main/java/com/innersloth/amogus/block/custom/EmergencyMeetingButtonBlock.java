@@ -16,7 +16,7 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-public class EmergencyMeetingButtonBlock extends TransparentBlock {
+public class EmergencyMeetingButtonBlock extends TransparentHorizontalFacingBlock {
     public static final MapCodec<EmergencyMeetingButtonBlock> CODEC = createCodec(EmergencyMeetingButtonBlock::new);
     public static final BooleanProperty PRESSED = BooleanProperty.of("pressed");
     public static final EnumProperty<AmongUsMaps> CURRENT_MAP = EnumProperty.of("current_map", AmongUsMaps.class);
