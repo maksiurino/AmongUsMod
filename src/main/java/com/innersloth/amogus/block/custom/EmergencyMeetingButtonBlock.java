@@ -28,8 +28,6 @@ public class EmergencyMeetingButtonBlock extends TransparentBlock {
     private static final VoxelShape COLUMN_SHAPE = Block.createColumnShape(16.0, 0.0, 10.0);
     private static final VoxelShape BLOCK_SHAPE = VoxelShapes.combineAndSimplify(COLUMN_SHAPE, Block.createColumnShape(12.0, 10.0, 16.0), BooleanBiFunction.OR);
 
-    private final int pressTicks;
-
     @Override
     public MapCodec<? extends EmergencyMeetingButtonBlock> getCodec() {
         return CODEC;
@@ -37,7 +35,6 @@ public class EmergencyMeetingButtonBlock extends TransparentBlock {
 
     public EmergencyMeetingButtonBlock(AbstractBlock.Settings settings) {
         super(settings);
-        this.pressTicks = 20;
         this.setDefaultState(this.getDefaultState().with(PRESSED, false).with(CURRENT_MAP, AmongUsMaps.SKELD));
     }
 
