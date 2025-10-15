@@ -5,6 +5,8 @@ import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.EnumProperty;
@@ -23,7 +25,8 @@ public class EmergencyMeetingButtonBlock extends TransparentHorizontalFacingBloc
     public static final BooleanProperty PRESSED = BooleanProperty.of("pressed");
     public static final EnumProperty<AmongUsMaps> CURRENT_MAP = EnumProperty.of("current_map", AmongUsMaps.class);
     private static final VoxelShape COLUMN_SHAPE = Block.createColumnShape(16.0, 0.0, 10.0);
-    private static final VoxelShape BLOCK_SHAPE = VoxelShapes.combineAndSimplify(COLUMN_SHAPE, Block.createColumnShape(12.0, 10.0, 16.0), BooleanBiFunction.OR);
+    private static final VoxelShape BLOCK_SHAPE_UNPOWERED = VoxelShapes.combineAndSimplify(COLUMN_SHAPE, Block.createColumnShape(12.0, 10.0, 16.0), BooleanBiFunction.OR);
+    private static final VoxelShape BLOCK_SHAPE_POWERED = VoxelShapes.combineAndSimplify(COLUMN_SHAPE, Block.createCuboidShape(2, 10, 14, 14, 22, 20), BooleanBiFunction.OR);
 
     @Override
     public MapCodec<? extends EmergencyMeetingButtonBlock> getCodec() {
@@ -42,7 +45,7 @@ public class EmergencyMeetingButtonBlock extends TransparentHorizontalFacingBloc
 
     @Override
     protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return BLOCK_SHAPE;
+        return state.get(PRESSED) ? BLOCK_SHAPE_POWERED : BLOCK_SHAPE_UNPOWERED;
     }
 
     @Override
@@ -50,6 +53,7 @@ public class EmergencyMeetingButtonBlock extends TransparentHorizontalFacingBloc
         if (!world.isClient) {
             world.setBlockState(pos, state.cycle(PRESSED));
         }
+        world.playSound(player, pos, state.get(PRESSED) ? SoundEvents.BLOCK_STONE_BUTTON_CLICK_OFF : SoundEvents.BLOCK_STONE_BUTTON_CLICK_ON, SoundCategory.BLOCKS);
         return ActionResult.SUCCESS;
     }
 
