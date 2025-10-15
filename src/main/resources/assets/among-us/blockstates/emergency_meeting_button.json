@@ -1,8 +1,19 @@
 {
   "multipart": [
     {
+      "when": {
+        "pressed": false
+      },
       "apply": {
         "model": "among-us:block/emergency_meeting_button"
+      }
+    },
+    {
+      "when": {
+        "pressed": true
+      },
+      "apply": {
+        "model": "among-us:block/emergency_meeting_button_open"
       }
     },
     {
