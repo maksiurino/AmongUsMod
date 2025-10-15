@@ -38,7 +38,7 @@ public class EmergencyMeetingButtonBlock extends TransparentBlock {
     public EmergencyMeetingButtonBlock(AbstractBlock.Settings settings) {
         super(settings);
         this.pressTicks = 20;
-        this.setDefaultState(this.getDefaultState().with(PRESSED, true).with(CURRENT_MAP, AmongUsMaps.SKELD));
+        this.setDefaultState(this.getDefaultState().with(PRESSED, false).with(CURRENT_MAP, AmongUsMaps.SKELD));
     }
 
     @Override
@@ -53,26 +53,9 @@ public class EmergencyMeetingButtonBlock extends TransparentBlock {
 
     @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-        if ((Boolean) state.get(PRESSED)) {
-            return ActionResult.CONSUME;
-        } else {
-            this.powerOn(state, world, pos, player);
-            return ActionResult.SUCCESS;
+        if (!world.isClient) {
+            world.setBlockState(pos, state.cycle(PRESSED));
         }
-    }
-
-    public void powerOn(BlockState state, World world, BlockPos pos, @Nullable PlayerEntity player) {
-        world.setBlockState(pos, state.with(PRESSED, true), Block.NOTIFY_ALL);
-        world.scheduleBlockTick(pos, this, this.pressTicks);
-        this.playClickSound(player, world, pos, true);
-        world.emitGameEvent(player, GameEvent.BLOCK_ACTIVATE, pos);
-    }
-
-    protected void playClickSound(@Nullable PlayerEntity player, WorldAccess world, BlockPos pos, boolean powered) {
-        world.playSound(powered ? player : null, pos, this.getClickSound(powered), SoundCategory.BLOCKS);
-    }
-
-    protected SoundEvent getClickSound(boolean powered) {
-        return powered ? BlockSetType.OAK.buttonClickOn() : BlockSetType.OAK.buttonClickOff();
+        return ActionResult.SUCCESS;
     }
 }
