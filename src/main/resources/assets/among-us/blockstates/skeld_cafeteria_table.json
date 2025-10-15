@@ -1,0 +1,341 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "OR": [
+          {
+            "type": "bottom",
+            "table_part": "center"
+          },
+          {
+            "type": "double",
+            "table_part": "center"
+          }
+        ]
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_table/center"
+      }
+    },
+
+    {
+      "when": {
+        "OR": [
+          {
+            "type": "bottom",
+            "table_part": "center_edge",
+            "facing": "north"
+          },
+          {
+            "type": "double",
+            "table_part": "center_edge",
+            "facing": "north"
+          }
+        ]
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_table/center_edge",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "OR": [
+          {
+            "type": "bottom",
+            "table_part": "center_edge",
+            "facing": "south"
+          },
+          {
+            "type": "double",
+            "table_part": "center_edge",
+            "facing": "south"
+          }
+        ]
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_table/center_edge"
+      }
+    },
+    {
+      "when": {
+        "OR": [
+          {
+            "type": "bottom",
+            "table_part": "center_edge",
+            "facing": "east"
+          },
+          {
+            "type": "double",
+            "table_part": "center_edge",
+            "facing": "east"
+          }
+        ]
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_table/center_edge",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "OR": [
+          {
+            "type": "bottom",
+            "table_part": "center_edge",
+            "facing": "west"
+          },
+          {
+            "type": "double",
+            "table_part": "center_edge",
+            "facing": "west"
+          }
+        ]
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_table/center_edge",
+        "y": 270
+      }
+    },
+
+    {
+      "when": {
+        "OR": [
+          {
+            "type": "bottom",
+            "table_part": "center_edge_side",
+            "facing": "north"
+          },
+          {
+            "type": "double",
+            "table_part": "center_edge_side",
+            "facing": "north"
+          }
+        ]
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_table/center_edge_side",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "OR": [
+          {
+            "type": "bottom",
+            "table_part": "center_edge_side",
+            "facing": "south"
+          },
+          {
+            "type": "double",
+            "table_part": "center_edge_side",
+            "facing": "south"
+          }
+        ]
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_table/center_edge_side"
+      }
+    },
+    {
+      "when": {
+        "OR": [
+          {
+            "type": "bottom",
+            "table_part": "center_edge_side",
+            "facing": "east"
+          },
+          {
+            "type": "double",
+            "table_part": "center_edge_side",
+            "facing": "east"
+          }
+        ]
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_table/center_edge_side",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "OR": [
+          {
+            "type": "bottom",
+            "table_part": "center_edge_side",
+            "facing": "west"
+          },
+          {
+            "type": "double",
+            "table_part": "center_edge_side",
+            "facing": "west"
+          }
+        ]
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_table/center_edge_side",
+        "y": 270
+      }
+    },
+
+    {
+      "when": {
+        "OR": [
+          {
+            "type": "bottom",
+            "table_part": "center_edge_side_mirrored",
+            "facing": "north"
+          },
+          {
+            "type": "double",
+            "table_part": "center_edge_side_mirrored",
+            "facing": "north"
+          }
+        ]
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_table/center_edge_side_mirrored",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "OR": [
+          {
+            "type": "bottom",
+            "table_part": "center_edge_side_mirrored",
+            "facing": "south"
+          },
+          {
+            "type": "double",
+            "table_part": "center_edge_side_mirrored",
+            "facing": "south"
+          }
+        ]
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_table/center_edge_side_mirrored"
+      }
+    },
+    {
+      "when": {
+        "OR": [
+          {
+            "type": "bottom",
+            "table_part": "center_edge_side_mirrored",
+            "facing": "east"
+          },
+          {
+            "type": "double",
+            "table_part": "center_edge_side_mirrored",
+            "facing": "east"
+          }
+        ]
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_table/center_edge_side_mirrored",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "OR": [
+          {
+            "type": "bottom",
+            "table_part": "center_edge_side_mirrored",
+            "facing": "west"
+          },
+          {
+            "type": "double",
+            "table_part": "center_edge_side_mirrored",
+            "facing": "west"
+          }
+        ]
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_table/center_edge_side_mirrored",
+        "y": 270
+      }
+    },
+
+    {
+      "when": {
+        "OR": [
+          {
+            "type": "bottom",
+            "table_part": "corner",
+            "facing": "north"
+          },
+          {
+            "type": "double",
+            "table_part": "corner",
+            "facing": "north"
+          }
+        ]
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_table/corner"
+      }
+    },
+    {
+      "when": {
+        "OR": [
+          {
+            "type": "bottom",
+            "table_part": "corner",
+            "facing": "south"
+          },
+          {
+            "type": "double",
+            "table_part": "corner",
+            "facing": "south"
+          }
+        ]
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_table/corner",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "OR": [
+          {
+            "type": "bottom",
+            "table_part": "corner",
+            "facing": "east"
+          },
+          {
+            "type": "double",
+            "table_part": "corner",
+            "facing": "east"
+          }
+        ]
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_table/corner",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "OR": [
+          {
+            "type": "bottom",
+            "table_part": "corner",
+            "facing": "west"
+          },
+          {
+            "type": "double",
+            "table_part": "corner",
+            "facing": "west"
+          }
+        ]
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_table/corner",
+        "y": 270
+      }
+    }
+  ]
+}

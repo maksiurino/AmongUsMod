@@ -1,0 +1,17 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "among-us:block/emergency_meeting_button"
+      }
+    },
+    {
+      "when": {
+        "current_map": "skeld"
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_table/center"
+      }
+    }
+  ]
+}
