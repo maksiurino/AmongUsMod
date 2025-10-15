@@ -4,3 +4,4 @@ Current additions:
  1. Skeld Cafeteria Floor Tiles
  2. Skeld Cafeteria Table
  3. Emergency Meeting Button
+ 4. Skeld Cafeteria Bench
