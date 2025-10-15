@@ -1,6 +1,7 @@
 package com.innersloth.amogus.block;
 
 import com.innersloth.amogus.AmongUs;
+import com.innersloth.amogus.block.custom.BenchBlock;
 import com.innersloth.amogus.block.custom.EmergencyMeetingButtonBlock;
 import com.innersloth.amogus.block.custom.TableBlock;
 import net.minecraft.block.AbstractBlock;
@@ -35,6 +36,12 @@ public class ModBlocks {
             "emergency_meeting_button",
             EmergencyMeetingButtonBlock::new,
             AbstractBlock.Settings.create().sounds(BlockSoundGroup.IRON).nonOpaque(),
+            true
+    );
+    public static final Block SKELD_CAFETERIA_BENCH = register(
+            "skeld_cafeteria_bench",
+            BenchBlock::new,
+            AbstractBlock.Settings.create().sounds(BlockSoundGroup.STONE).nonOpaque(),
             true
     );
 

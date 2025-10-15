@@ -1,0 +1,22 @@
+package com.innersloth.amogus.block.custom.enums;
+
+import net.minecraft.util.StringIdentifiable;
+
+public enum BenchPart implements StringIdentifiable {
+    TablePart("table_part");
+
+    private final String name;
+
+    private BenchPart(final String name) {
+        this.name = name;
+    }
+
+    public String toString() {
+        return this.name;
+    }
+
+    @Override
+    public String asString() {
+        return this.name;
+    }
+}
