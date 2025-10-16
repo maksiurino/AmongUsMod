@@ -30,19 +30,19 @@ public class ModBlocks {
     public static final Block SKELD_CAFETERIA_TABLE = register(
             "skeld_cafeteria_table",
             TableBlock::new,
-            AbstractBlock.Settings.create().sounds(BlockSoundGroup.STONE).nonOpaque(),
+            AbstractBlock.Settings.create().sounds(BlockSoundGroup.STONE).nonOpaque().jumpVelocityMultiplier(0.F),
             true
     );
     public static final Block EMERGENCY_MEETING_BUTTON = register(
             "emergency_meeting_button",
             EmergencyMeetingButtonBlock::new,
-            AbstractBlock.Settings.create().sounds(BlockSoundGroup.IRON).nonOpaque(),
+            AbstractBlock.Settings.create().sounds(BlockSoundGroup.IRON).nonOpaque().jumpVelocityMultiplier(0.F),
             true
     );
     public static final Block SKELD_CAFETERIA_BENCH = register(
             "skeld_cafeteria_bench",
             BenchBlock::new,
-            AbstractBlock.Settings.create().sounds(BlockSoundGroup.STONE).nonOpaque(),
+            AbstractBlock.Settings.create().sounds(BlockSoundGroup.STONE).nonOpaque().jumpVelocityMultiplier(0.F),
             true
     );
 

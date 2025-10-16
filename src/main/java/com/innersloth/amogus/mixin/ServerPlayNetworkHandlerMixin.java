@@ -1,6 +1,10 @@
 package com.innersloth.amogus.mixin;
 
+import com.innersloth.amogus.block.custom.BenchBlock;
+import com.innersloth.amogus.block.custom.EmergencyMeetingButtonBlock;
 import com.innersloth.amogus.block.custom.FloorBlock;
+import com.innersloth.amogus.block.custom.TableBlock;
+import net.minecraft.block.Block;
 import net.minecraft.network.packet.c2s.play.ClientCommandC2SPacket;
 import net.minecraft.server.network.ServerPlayNetworkHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -20,7 +24,9 @@ public class ServerPlayNetworkHandlerMixin {
 
         BlockPos posUnder = player.getBlockPos().down();
 
-        if (player.getWorld().getBlockState(posUnder).getBlock() instanceof FloorBlock) {
+        Block blockUnder = player.getWorld().getBlockState(posUnder).getBlock();
+
+        if (blockUnder instanceof FloorBlock || blockUnder instanceof TableBlock || blockUnder instanceof EmergencyMeetingButtonBlock || blockUnder instanceof BenchBlock) {
             ClientCommandC2SPacket.Mode mode = packet.getMode();
 
             if (mode == ClientCommandC2SPacket.Mode.START_SPRINTING ||
@@ -29,7 +35,7 @@ public class ServerPlayNetworkHandlerMixin {
                     mode == ClientCommandC2SPacket.Mode.RELEASE_SHIFT_KEY) {
 
                 ci.cancel();
-                player.sendMessage(Text.of("Stop crouching/sprinting!"));
+                player.sendMessage(Text.of("Stop sneaking/sprinting!"));
             }
         }
     }
