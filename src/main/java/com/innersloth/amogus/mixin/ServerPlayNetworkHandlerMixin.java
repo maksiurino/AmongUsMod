@@ -4,6 +4,7 @@ import com.innersloth.amogus.block.custom.FloorBlock;
 import net.minecraft.network.packet.c2s.play.ClientCommandC2SPacket;
 import net.minecraft.server.network.ServerPlayNetworkHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -28,6 +29,7 @@ public class ServerPlayNetworkHandlerMixin {
                     mode == ClientCommandC2SPacket.Mode.RELEASE_SHIFT_KEY) {
 
                 ci.cancel();
+                player.sendMessage(Text.of("Stop crouching/sprinting!"));
             }
         }
     }
