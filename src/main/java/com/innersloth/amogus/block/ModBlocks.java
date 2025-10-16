@@ -3,6 +3,7 @@ package com.innersloth.amogus.block;
 import com.innersloth.amogus.AmongUs;
 import com.innersloth.amogus.block.custom.BenchBlock;
 import com.innersloth.amogus.block.custom.EmergencyMeetingButtonBlock;
+import com.innersloth.amogus.block.custom.FloorBlock;
 import com.innersloth.amogus.block.custom.TableBlock;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.SlabBlock;
@@ -22,7 +23,7 @@ import java.util.function.Function;
 public class ModBlocks {
     public static final Block SKELD_CAFETERIA_TILES = register(
             "skeld_cafeteria_tiles",
-            Block::new,
+            FloorBlock::new,
             AbstractBlock.Settings.create().sounds(BlockSoundGroup.STONE).jumpVelocityMultiplier(0.F),
             true
     );
