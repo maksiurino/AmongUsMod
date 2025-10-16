@@ -6,7 +6,7 @@
         "bench_part": "edges"
       },
       "apply": {
-        "model": "among-us:models/block/skeld_cafe_bench/edges"
+        "model": "among-us:block/skeld_cafe_bench/edges"
       }
     },
     {
@@ -15,7 +15,7 @@
         "bench_part": "edges"
       },
       "apply": {
-        "model": "among-us:models/block/skeld_cafe_bench/edges",
+        "model": "among-us:block/skeld_cafe_bench/edges",
         "y": 90
       }
     },
@@ -25,7 +25,7 @@
         "bench_part": "edges"
       },
       "apply": {
-        "model": "among-us:models/block/skeld_cafe_bench/edges",
+        "model": "among-us:block/skeld_cafe_bench/edges",
         "y": 180
       }
     },
@@ -35,7 +35,7 @@
         "bench_part": "edges"
       },
       "apply": {
-        "model": "among-us:models/block/skeld_cafe_bench/edges",
+        "model": "among-us:block/skeld_cafe_bench/edges",
         "y": 270
       }
     }

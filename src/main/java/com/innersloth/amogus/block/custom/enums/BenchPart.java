@@ -3,7 +3,8 @@ package com.innersloth.amogus.block.custom.enums;
 import net.minecraft.util.StringIdentifiable;
 
 public enum BenchPart implements StringIdentifiable {
-    EDGES("edges");
+    EDGES("edges"),
+    EDGE_SIDES("edge_sides");
 
     private final String name;
 

@@ -14,6 +14,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import com.innersloth.amogus.AmongUsOptions;
 
 @Mixin(ServerPlayNetworkHandler.class)
 public class ServerPlayNetworkHandlerMixin {
@@ -35,7 +36,9 @@ public class ServerPlayNetworkHandlerMixin {
                     mode == ClientCommandC2SPacket.Mode.RELEASE_SHIFT_KEY) {
 
                 ci.cancel();
-                player.sendMessage(Text.of("Stop sneaking/sprinting!"));
+                if (AmongUsOptions.showDisabledRunningMessages) {
+                    player.sendMessage(Text.of("Stop sneaking/sprinting!"));
+                }
             }
         }
     }
