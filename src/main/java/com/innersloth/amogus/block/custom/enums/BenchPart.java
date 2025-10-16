@@ -3,7 +3,7 @@ package com.innersloth.amogus.block.custom.enums;
 import net.minecraft.util.StringIdentifiable;
 
 public enum BenchPart implements StringIdentifiable {
-    TablePart("table_part");
+    EDGES("edges");
 
     private final String name;
 
