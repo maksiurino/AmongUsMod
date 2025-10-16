@@ -22,8 +22,7 @@
 			"com.innersloth.amogus.AmongUsDataGenerator"
 		],
 		"client": [
-			"com.innersloth.amogus.AmongUsClient",
-			"com.innersloth.amogus.client.KeybindBlockHandler"
+			"com.innersloth.amogus.AmongUsClient"
 		]
 	},
 	"mixins": [
