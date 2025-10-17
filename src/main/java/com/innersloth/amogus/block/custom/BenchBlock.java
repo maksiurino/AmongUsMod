@@ -19,6 +19,7 @@ public class BenchBlock extends HorizontalFacingBlock {
     public static final MapCodec<BenchBlock> CODEC = createCodec(BenchBlock::new);
     public static final EnumProperty<BenchPart> BENCH_PART = EnumProperty.of("bench_part", BenchPart.class);
     private static final Map<Direction, VoxelShape> EDGES_SHAPE = VoxelShapes.createFacingShapeMap(Block.createCuboidShape(0, 0, 0, 16, 4, 8));
+    private static final Map<Direction, VoxelShape> NORMAL_SHAPE = VoxelShapes.createFacingShapeMap(Block.createColumnShape(16, 0, 4));
 
     public BenchBlock(Settings settings) {
         super(settings);
@@ -33,8 +34,8 @@ public class BenchBlock extends HorizontalFacingBlock {
     @Override
     protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return switch (state.get(BENCH_PART)) {
-            case EDGES -> (VoxelShape)EDGES_SHAPE.get(state.get(FACING).getOpposite());
-            default -> VoxelShapes.fullCube();
+            case EDGES, EDGE_CORNERS, EDGE_CORNERS_MIRRORED -> (VoxelShape)EDGES_SHAPE.get(state.get(FACING).getOpposite());
+            default -> (VoxelShape)NORMAL_SHAPE.get(state.get(FACING).getOpposite());
         };
     }
 

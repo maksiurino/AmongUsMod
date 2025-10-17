@@ -38,6 +38,206 @@
         "model": "among-us:block/skeld_cafe_bench/edges",
         "y": 270
       }
+    },
+
+    {
+      "when": {
+        "facing": "north",
+        "bench_part": "edge_sides"
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_bench/edge_sides"
+      }
+    },
+    {
+      "when": {
+        "facing": "east",
+        "bench_part": "edge_sides"
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_bench/edge_sides",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "facing": "south",
+        "bench_part": "edge_sides"
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_bench/edge_sides",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "facing": "west",
+        "bench_part": "edge_sides"
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_bench/edge_sides",
+        "y": 270
+      }
+    },
+
+    {
+      "when": {
+        "facing": "north",
+        "bench_part": "edge_sides_mirrored"
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_bench/edge_sides_mirrored"
+      }
+    },
+    {
+      "when": {
+        "facing": "east",
+        "bench_part": "edge_sides_mirrored"
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_bench/edge_sides_mirrored",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "facing": "south",
+        "bench_part": "edge_sides_mirrored"
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_bench/edge_sides_mirrored",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "facing": "west",
+        "bench_part": "edge_sides_mirrored"
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_bench/edge_sides_mirrored",
+        "y": 270
+      }
+    },
+
+    {
+      "when": {
+        "facing": "north",
+        "bench_part": "edge_corners"
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_bench/edge_corners"
+      }
+    },
+    {
+      "when": {
+        "facing": "east",
+        "bench_part": "edge_corners"
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_bench/edge_corners",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "facing": "south",
+        "bench_part": "edge_corners"
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_bench/edge_corners",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "facing": "west",
+        "bench_part": "edge_corners"
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_bench/edge_corners",
+        "y": 270
+      }
+    },
+
+    {
+      "when": {
+        "facing": "north",
+        "bench_part": "edge_corners_mirrored"
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_bench/edge_corners_mirrored"
+      }
+    },
+    {
+      "when": {
+        "facing": "east",
+        "bench_part": "edge_corners_mirrored"
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_bench/edge_corners_mirrored",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "facing": "south",
+        "bench_part": "edge_corners_mirrored"
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_bench/edge_corners_mirrored",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "facing": "west",
+        "bench_part": "edge_corners_mirrored"
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_bench/edge_corners_mirrored",
+        "y": 270
+      }
+    },
+
+    {
+      "when": {
+        "facing": "north",
+        "bench_part": "edge_turnable"
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_bench/edge_turnable"
+      }
+    },
+    {
+      "when": {
+        "facing": "east",
+        "bench_part": "edge_turnable"
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_bench/edge_turnable",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "facing": "south",
+        "bench_part": "edge_turnable"
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_bench/edge_turnable",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "facing": "west",
+        "bench_part": "edge_turnable"
+      },
+      "apply": {
+        "model": "among-us:block/skeld_cafe_bench/edge_turnable",
+        "y": 270
+      }
     }
   ]
 }
