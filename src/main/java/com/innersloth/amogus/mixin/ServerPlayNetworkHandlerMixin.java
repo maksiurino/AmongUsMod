@@ -15,6 +15,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import com.innersloth.amogus.AmongUsOptions;
+import com.innersloth.amogus.util.ModGameRules;
 
 @Mixin(ServerPlayNetworkHandler.class)
 public class ServerPlayNetworkHandlerMixin {
@@ -36,7 +37,7 @@ public class ServerPlayNetworkHandlerMixin {
                     mode == ClientCommandC2SPacket.Mode.RELEASE_SHIFT_KEY) {
 
                 ci.cancel();
-                if (AmongUsOptions.showDisabledRunningMessages) {
+                if (ModGameRules.SHOW_DISABLED_RUNNING_DIALOGUE.equals(true)) {
                     player.sendMessage(Text.of("Stop sneaking/sprinting!"));
                 }
             }

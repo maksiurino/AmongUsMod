@@ -24,6 +24,7 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.tick.ScheduledTickView;
@@ -140,5 +141,33 @@ public class TableBlock extends Block implements Waterloggable {
             default:
                 return false;
         }
+    }
+
+    @Override
+    public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
+        world.setBlockState(pos.north(), state);
+        world.setBlockState(pos.south(), state);
+        world.setBlockState(pos.east(), state);
+        world.setBlockState(pos.west(), state);
+        world.setBlockState(pos.north().east(), state);
+        world.setBlockState(pos.north().west(), state);
+        world.setBlockState(pos.south().east(), state);
+        world.setBlockState(pos.south().west(), state);
+        world.setBlockState(pos.north(2), state.with(TABLE_PART, TablePart.CENTER_EDGE).with(FACING, Direction.SOUTH));
+        world.setBlockState(pos.south(2), state.with(TABLE_PART, TablePart.CENTER_EDGE).with(FACING, Direction.NORTH));
+        world.setBlockState(pos.east(2), state.with(TABLE_PART, TablePart.CENTER_EDGE).with(FACING, Direction.WEST));
+        world.setBlockState(pos.west(2), state.with(TABLE_PART, TablePart.CENTER_EDGE).with(FACING, Direction.EAST));
+        world.setBlockState(pos.north(2).west(), state.with(TABLE_PART, TablePart.CENTER_EDGE_SIDE).with(FACING, Direction.SOUTH));
+        world.setBlockState(pos.north(2).east(), state.with(TABLE_PART, TablePart.CENTER_EDGE_SIDE_MIRRORED).with(FACING, Direction.SOUTH));
+        world.setBlockState(pos.south(2).east(), state.with(TABLE_PART, TablePart.CENTER_EDGE_SIDE).with(FACING, Direction.NORTH));
+        world.setBlockState(pos.south(2).west(), state.with(TABLE_PART, TablePart.CENTER_EDGE_SIDE_MIRRORED).with(FACING, Direction.NORTH));
+        world.setBlockState(pos.east(2).north(), state.with(TABLE_PART, TablePart.CENTER_EDGE_SIDE).with(FACING, Direction.WEST));
+        world.setBlockState(pos.east(2).south(), state.with(TABLE_PART, TablePart.CENTER_EDGE_SIDE_MIRRORED).with(FACING, Direction.WEST));
+        world.setBlockState(pos.west(2).south(), state.with(TABLE_PART, TablePart.CENTER_EDGE_SIDE).with(FACING, Direction.EAST));
+        world.setBlockState(pos.west(2).north(), state.with(TABLE_PART, TablePart.CENTER_EDGE_SIDE_MIRRORED).with(FACING, Direction.EAST));
+        world.setBlockState(pos.north(2).west(2), state.with(TABLE_PART, TablePart.CORNER).with(FACING, Direction.SOUTH));
+        world.setBlockState(pos.north(2).east(2), state.with(TABLE_PART, TablePart.CORNER).with(FACING, Direction.WEST));
+        world.setBlockState(pos.south(2).west(2), state.with(TABLE_PART, TablePart.CORNER).with(FACING, Direction.EAST));
+        world.setBlockState(pos.south(2).east(2), state.with(TABLE_PART, TablePart.CORNER).with(FACING, Direction.NORTH));
     }
 }
