@@ -6,6 +6,7 @@ import com.innersloth.amogus.item.ModItemGroups;
 import com.innersloth.amogus.util.ModGameRules;
 import net.fabricmc.api.ModInitializer;
 
+import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,5 +21,9 @@ public class AmongUs implements ModInitializer {
 		ModBlocks.initialize();
 		ModEntities.registerModEntities();
 		ModItemGroups.registerModItemGroups();
+	}
+
+	public static Identifier identifier(String name) {
+		return Identifier.of(MOD_ID, name);
 	}
 }
