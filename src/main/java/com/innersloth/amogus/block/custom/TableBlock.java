@@ -146,7 +146,6 @@ public class TableBlock extends Block implements Waterloggable {
 
     @Override
     public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
-        world.setBlockState(pos.north(3).east(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState());
         world.setBlockState(pos.north(), state);
         world.setBlockState(pos.south(), state);
         world.setBlockState(pos.east(), state);
@@ -171,5 +170,27 @@ public class TableBlock extends Block implements Waterloggable {
         world.setBlockState(pos.north(2).east(2), state.with(TABLE_PART, TablePart.CORNER).with(FACING, Direction.WEST));
         world.setBlockState(pos.south(2).west(2), state.with(TABLE_PART, TablePart.CORNER).with(FACING, Direction.EAST));
         world.setBlockState(pos.south(2).east(2), state.with(TABLE_PART, TablePart.CORNER).with(FACING, Direction.NORTH));
+
+        if (state.isOf(ModBlocks.SKELD_CAFETERIA_TABLE)) {
+            world.setBlockState(pos.north(3).east(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.SOUTH));
+            world.setBlockState(pos.north(4).east(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.NORTH));
+            world.setBlockState(pos.north(3).west(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.SOUTH));
+            world.setBlockState(pos.north(4).west(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.NORTH));
+
+            world.setBlockState(pos.south(4).east(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.SOUTH));
+            world.setBlockState(pos.south(3).east(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.NORTH));
+            world.setBlockState(pos.south(4).west(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.SOUTH));
+            world.setBlockState(pos.south(3).west(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.NORTH));
+
+            world.setBlockState(pos.east(3).north(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.WEST));
+            world.setBlockState(pos.east(4).north(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.EAST));
+            world.setBlockState(pos.east(3).south(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.WEST));
+            world.setBlockState(pos.east(4).south(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.EAST));
+
+            world.setBlockState(pos.west(4).north(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.WEST));
+            world.setBlockState(pos.west(3).north(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.EAST));
+            world.setBlockState(pos.west(4).south(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.WEST));
+            world.setBlockState(pos.west(3).south(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.EAST));
+        }
     }
 }
