@@ -10,6 +10,14 @@ base {
 	archivesName = project.archives_base_name
 }
 
+loom {
+	runs {
+		client {
+			programArgs(["--username", "Maksiuhrino", "--uuid", "79a8f749-1705-4123-b794-b4c8d0373de2"])
+		}
+	}
+}
+
 repositories {
 	// Add repositories to retrieve artifacts from in here.
 	// You should only use this when depending on other mods because
