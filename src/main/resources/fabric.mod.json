@@ -39,6 +39,7 @@
 		"another-mod": "*"
 	},
 	"conflicts": {
-		"bettercontrols": "*"
+		"bettercontrols": "*",
+		"icon": "*"
 	}
 }
