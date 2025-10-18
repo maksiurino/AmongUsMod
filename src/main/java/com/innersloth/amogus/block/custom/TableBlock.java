@@ -6,7 +6,6 @@ import com.innersloth.amogus.block.custom.enums.TablePart;
 import com.innersloth.amogus.block.custom.enums.TableType;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
-import net.minecraft.block.enums.BlockHalf;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.fluid.Fluid;
@@ -68,9 +67,9 @@ public class TableBlock extends Block implements Waterloggable {
 
     @Override
     protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return switch ((TablePart)state.get(TABLE_PART)) {
-            case CORNER -> (VoxelShape)CORNER_SHAPE.get(state.get(FACING));
-            case CENTER_EDGE_SIDE, CENTER_EDGE_SIDE_MIRRORED -> (VoxelShape) CENTER_EDGE_SIDE_SHAPE.get(state.get(FACING));
+        return switch (state.get(TABLE_PART)) {
+            case CORNER -> CORNER_SHAPE.get(state.get(FACING));
+            case CENTER_EDGE_SIDE, CENTER_EDGE_SIDE_MIRRORED -> CENTER_EDGE_SIDE_SHAPE.get(state.get(FACING));
             default -> BOTTOM_SHAPE;
         };
     }
@@ -105,12 +104,12 @@ public class TableBlock extends Block implements Waterloggable {
 
     @Override
     public boolean tryFillWithFluid(WorldAccess world, BlockPos pos, BlockState state, FluidState fluidState) {
-        return state.get(TYPE) != TableType.DOUBLE ? Waterloggable.super.tryFillWithFluid(world, pos, state, fluidState) : false;
+        return state.get(TYPE) != TableType.DOUBLE && Waterloggable.super.tryFillWithFluid(world, pos, state, fluidState);
     }
 
     @Override
     public boolean canFillWithFluid(@Nullable LivingEntity filler, BlockView world, BlockPos pos, BlockState state, Fluid fluid) {
-        return state.get(TYPE) != TableType.DOUBLE ? Waterloggable.super.canFillWithFluid(filler, world, pos, state, fluid) : false;
+        return state.get(TYPE) != TableType.DOUBLE && Waterloggable.super.canFillWithFluid(filler, world, pos, state, fluid);
     }
 
     @Override
@@ -124,7 +123,7 @@ public class TableBlock extends Block implements Waterloggable {
             BlockState neighborState,
             Random random
     ) {
-        if ((Boolean)state.get(WATERLOGGED)) {
+        if (state.get(WATERLOGGED)) {
             tickView.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
         }
 
@@ -133,16 +132,7 @@ public class TableBlock extends Block implements Waterloggable {
 
     @Override
     protected boolean canPathfindThrough(BlockState state, NavigationType type) {
-        switch (type) {
-            case LAND:
-                return false;
-            case WATER:
-                return state.getFluidState().isIn(FluidTags.WATER);
-            case AIR:
-                return false;
-            default:
-                return false;
-        }
+        return type == NavigationType.WATER && state.getFluidState().isIn(FluidTags.WATER);
     }
 
     @Override
