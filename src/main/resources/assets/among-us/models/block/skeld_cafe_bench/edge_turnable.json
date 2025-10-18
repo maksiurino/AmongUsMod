@@ -176,7 +176,7 @@
 			}
 		},
 		{
-			"from": [7, 2, 7],
+			"from": [6, 2, 7],
 			"to": [16, 4, 8],
 			"rotation": {"angle": 0, "axis": "y", "origin": [0, 2, -8]},
 			"faces": {
@@ -202,7 +202,7 @@
 			}
 		},
 		{
-			"from": [9, 2, 6],
+			"from": [8, 2, 6],
 			"to": [16, 4, 7],
 			"rotation": {"angle": 0, "axis": "y", "origin": [0, 2, -9]},
 			"faces": {

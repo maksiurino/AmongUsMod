@@ -1,5 +1,6 @@
 package com.innersloth.amogus.block.custom;
 
+import com.innersloth.amogus.block.ModBlocks;
 import com.innersloth.amogus.block.custom.enums.TablePart;
 import com.innersloth.amogus.block.custom.enums.TableType;
 import com.mojang.serialization.MapCodec;
@@ -145,6 +146,7 @@ public class TableBlock extends Block implements Waterloggable {
 
     @Override
     public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
+        world.setBlockState(pos.north(3).east(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState());
         world.setBlockState(pos.north(), state);
         world.setBlockState(pos.south(), state);
         world.setBlockState(pos.east(), state);
