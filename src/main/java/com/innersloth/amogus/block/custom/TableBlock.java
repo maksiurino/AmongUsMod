@@ -1,6 +1,7 @@
 package com.innersloth.amogus.block.custom;
 
 import com.innersloth.amogus.block.ModBlocks;
+import com.innersloth.amogus.block.custom.enums.BenchPart;
 import com.innersloth.amogus.block.custom.enums.TablePart;
 import com.innersloth.amogus.block.custom.enums.TableType;
 import com.mojang.serialization.MapCodec;
@@ -191,6 +192,18 @@ public class TableBlock extends Block implements Waterloggable {
             world.setBlockState(pos.west(3).north(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.EAST));
             world.setBlockState(pos.west(4).south(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.WEST));
             world.setBlockState(pos.west(3).south(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.EAST));
+
+            world.setBlockState(pos.north(4).east(2), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.NORTH).with(BenchBlock.BENCH_PART, BenchPart.EDGE_CORNERS));
+            world.setBlockState(pos.north(4).west(2), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.NORTH).with(BenchBlock.BENCH_PART, BenchPart.EDGE_CORNERS_MIRRORED));
+
+            world.setBlockState(pos.south(4).east(2), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.SOUTH).with(BenchBlock.BENCH_PART, BenchPart.EDGE_CORNERS_MIRRORED));
+            world.setBlockState(pos.south(4).west(2), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.SOUTH).with(BenchBlock.BENCH_PART, BenchPart.EDGE_CORNERS));
+
+            world.setBlockState(pos.east(4).south(2), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.EAST).with(BenchBlock.BENCH_PART, BenchPart.EDGE_CORNERS));
+            world.setBlockState(pos.east(4).north(2), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.EAST).with(BenchBlock.BENCH_PART, BenchPart.EDGE_CORNERS_MIRRORED));
+
+            world.setBlockState(pos.west(4).north(2), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.WEST).with(BenchBlock.BENCH_PART, BenchPart.EDGE_CORNERS));
+            world.setBlockState(pos.west(4).south(2), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.WEST).with(BenchBlock.BENCH_PART, BenchPart.EDGE_CORNERS_MIRRORED));
         }
     }
 }
