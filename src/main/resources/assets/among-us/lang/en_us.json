@@ -1,5 +1,6 @@
 {
-  "itemGroup.among-us.skeld_group": "Among Us - The Skeld",
+  "itemGroup.among-us.skeld_blocks_group": "Among Us Skeld - Building Blocks",
+  "itemGroup.among-us.skeld_utils_group": "Among Us Skeld - Utilities",
 
   "block.among-us.skeld_cafeteria_tiles": "Skeld Cafeteria Tiles",
   "block.among-us.skeld_cafeteria_table": "Skeld Cafeteria Table",

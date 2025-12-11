@@ -3,7 +3,10 @@
 	"package": "com.innersloth.amogus.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"ServerPlayNetworkHandlerMixin"
+		"ServerPlayNetworkHandlerMixin",
+		"MixinTitleScreen",
+		"ScreenAccessor",
+		"ButtonWidgetAccessor"
 	],
 	"injectors": {
 		"defaultRequire": 1
