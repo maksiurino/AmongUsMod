@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "among-us:block/skeld_cafeteria_table"
+    "model": "among-us:item/skeld_cafe_bench"
   }
 }

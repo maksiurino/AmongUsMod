@@ -54,7 +54,7 @@ public class TableBlock extends Block implements Waterloggable {
 
     public TableBlock(AbstractBlock.Settings settings) {
         super(settings);
-        this.setDefaultState(this.getDefaultState().with(TYPE, TableType.BOTTOM).with(TABLE_PART, TablePart.CENTER).with(WATERLOGGED, false).with(FACING, Direction.NORTH));
+        this.setDefaultState(this.getDefaultState().with(TYPE, TableType.BOTTOM).with(TABLE_PART, TablePart.CENTER).with(WATERLOGGED, false).with(FACING, Direction.NORTH).with(AMONG_US_MAP, AmongUsMaps.SKELD));
     }
 
     @Override
@@ -64,7 +64,7 @@ public class TableBlock extends Block implements Waterloggable {
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(TYPE, WATERLOGGED, TABLE_PART, FACING);
+        builder.add(TYPE, WATERLOGGED, TABLE_PART, FACING, AMONG_US_MAP);
     }
 
     @Override
@@ -79,7 +79,14 @@ public class TableBlock extends Block implements Waterloggable {
     @Nullable
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite()).with(TABLE_PART, TablePart.CENTER).with(TYPE, TableType.BOTTOM).with(AMONG_US_MAP, AmongUsMaps.SKELD);
+        BlockPos pos = ctx.getBlockPos();
+        FluidState fluidState = ctx.getWorld().getFluidState(pos);
+        return this.getDefaultState()
+                .with(FACING, ctx.getHorizontalPlayerFacing().getOpposite())
+                .with(TABLE_PART, TablePart.CENTER)
+                .with(TYPE, TableType.BOTTOM)
+                .with(AMONG_US_MAP, AmongUsMaps.SKELD)
+                .with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
     }
 
     @Override

@@ -38,7 +38,6 @@ public class ModItemGroups {
         ItemGroupEvents.modifyEntriesEvent(AMONG_US_SKELD_UTILS.key()).register(entries -> {
             entries.add(ModBlocks.EMERGENCY_MEETING_BUTTON.asItem());
             entries.add(ModBlocks.SKELD_CAFETERIA_TABLE.asItem());
-            entries.add(ModBlocks.SKELD_CAFETERIA_BENCH.asItem());
         });
     }
 }

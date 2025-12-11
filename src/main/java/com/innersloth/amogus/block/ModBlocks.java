@@ -21,44 +21,40 @@ import net.minecraft.util.Identifier;
 import java.util.function.Function;
 
 public class ModBlocks {
+    public static final AbstractBlock.Settings NO_JUMP_SETTINGS = AbstractBlock.Settings.create().jumpVelocityMultiplier(0.F);
+
     public static final Block SKELD_CAFETERIA_TILES = register(
             "skeld_cafeteria_tiles",
             FloorBlock::new,
-            AbstractBlock.Settings.create().sounds(BlockSoundGroup.STONE).jumpVelocityMultiplier(0.F),
+            NO_JUMP_SETTINGS.sounds(BlockSoundGroup.STONE),
             true
     );
     public static final Block SKELD_CAFETERIA_TABLE = register(
             "skeld_cafeteria_table",
             TableBlock::new,
-            AbstractBlock.Settings.create().sounds(BlockSoundGroup.STONE).nonOpaque().jumpVelocityMultiplier(0.F),
+            NO_JUMP_SETTINGS.sounds(BlockSoundGroup.STONE).nonOpaque(),
             true
     );
     public static final Block EMERGENCY_MEETING_BUTTON = register(
             "emergency_meeting_button",
             EmergencyMeetingButtonBlock::new,
-            AbstractBlock.Settings.create().sounds(BlockSoundGroup.IRON).nonOpaque().jumpVelocityMultiplier(0.F),
+            NO_JUMP_SETTINGS.sounds(BlockSoundGroup.IRON).nonOpaque(),
             true
     );
     public static final Block SKELD_CAFETERIA_BENCH = register(
             "skeld_cafeteria_bench",
             BenchBlock::new,
-            AbstractBlock.Settings.create().sounds(BlockSoundGroup.STONE).nonOpaque().jumpVelocityMultiplier(0.F),
+            NO_JUMP_SETTINGS.sounds(BlockSoundGroup.STONE).nonOpaque(),
             true
     );
 
     public static void initialize() {}
 
     private static Block register(String name, Function<AbstractBlock.Settings, Block> blockFactory, AbstractBlock.Settings settings, boolean shouldRegisterItem) {
-        // Create a registry key for the block
         RegistryKey<Block> blockKey = keyOfBlock(name);
-        // Create the block instance
         Block block = blockFactory.apply(settings.registryKey(blockKey));
 
-        // Sometimes, you may not want to register an item for the block.
-        // Eg: if it's a technical block like `minecraft:moving_piston` or `minecraft:end_gateway`
         if (shouldRegisterItem) {
-            // Items need to be registered with a different type of registry key, but the ID
-            // can be the same.
             RegistryKey<Item> itemKey = keyOfItem(name);
 
             BlockItem blockItem = new BlockItem(block, new Item.Settings().registryKey(itemKey).useBlockPrefixedTranslationKey());
