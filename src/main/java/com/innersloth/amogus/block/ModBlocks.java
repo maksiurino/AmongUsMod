@@ -45,7 +45,7 @@ public class ModBlocks {
             "skeld_cafeteria_bench",
             BenchBlock::new,
             NO_JUMP_SETTINGS.sounds(BlockSoundGroup.STONE).nonOpaque(),
-            true
+            false
     );
 
     public static void initialize() {}

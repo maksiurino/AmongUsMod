@@ -1,9 +1,12 @@
 package com.innersloth.amogus;
 
 import com.innersloth.amogus.block.ModBlocks;
+import com.innersloth.amogus.config.AmongUsConfig;
 import com.innersloth.amogus.entity.ModEntities;
 import com.innersloth.amogus.item.ModItemGroups;
 import com.innersloth.amogus.util.ModGameRules;
+import me.shedaniel.autoconfig.AutoConfig;
+import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
 
 import net.minecraft.util.Identifier;
@@ -16,7 +19,7 @@ public class AmongUs implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		LOGGER.info("Hello Fabric world!");
+		AutoConfig.register(AmongUsConfig.class, JanksonConfigSerializer::new);
 		ModGameRules.initialize();
 		ModBlocks.initialize();
 		ModEntities.registerModEntities();
