@@ -1,6 +1,7 @@
 package com.innersloth.amogus.block.custom;
 
 import com.innersloth.amogus.block.ModBlocks;
+import com.innersloth.amogus.block.custom.enums.AmongUsMaps;
 import com.innersloth.amogus.block.custom.enums.BenchPart;
 import com.innersloth.amogus.block.custom.enums.TablePart;
 import com.innersloth.amogus.block.custom.enums.TableType;
@@ -38,6 +39,7 @@ public class TableBlock extends Block implements Waterloggable {
     public static final EnumProperty<Direction> FACING = HorizontalFacingBlock.FACING;
     public static final EnumProperty<TableType> TYPE = Properties.TABLE_TYPE;
     public static final EnumProperty<TablePart> TABLE_PART = Properties.TABLE_PART;
+    public static final EnumProperty<AmongUsMaps> AMONG_US_MAP = EnumProperty.of("map", AmongUsMaps.class);
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     private static final VoxelShape BOTTOM_SHAPE = Block.createColumnShape(16.0, 0.0, 8.0);
     private static final VoxelShape CORNER_SHAPE_FIRST = Block.createCuboidShape(0, 0, 0, 4, 8, 4);
@@ -77,7 +79,7 @@ public class TableBlock extends Block implements Waterloggable {
     @Nullable
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite()).with(TABLE_PART, TablePart.CENTER).with(TYPE, TableType.BOTTOM);
+        return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite()).with(TABLE_PART, TablePart.CENTER).with(TYPE, TableType.BOTTOM).with(AMONG_US_MAP, AmongUsMaps.SKELD);
     }
 
     @Override
@@ -137,63 +139,74 @@ public class TableBlock extends Block implements Waterloggable {
 
     @Override
     public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
-        world.setBlockState(pos.north(), state);
-        world.setBlockState(pos.south(), state);
-        world.setBlockState(pos.east(), state);
-        world.setBlockState(pos.west(), state);
-        world.setBlockState(pos.north().east(), state);
-        world.setBlockState(pos.north().west(), state);
-        world.setBlockState(pos.south().east(), state);
-        world.setBlockState(pos.south().west(), state);
-        world.setBlockState(pos.north(2), state.with(TABLE_PART, TablePart.CENTER_EDGE).with(FACING, Direction.SOUTH));
-        world.setBlockState(pos.south(2), state.with(TABLE_PART, TablePart.CENTER_EDGE).with(FACING, Direction.NORTH));
-        world.setBlockState(pos.east(2), state.with(TABLE_PART, TablePart.CENTER_EDGE).with(FACING, Direction.WEST));
-        world.setBlockState(pos.west(2), state.with(TABLE_PART, TablePart.CENTER_EDGE).with(FACING, Direction.EAST));
-        world.setBlockState(pos.north(2).west(), state.with(TABLE_PART, TablePart.CENTER_EDGE_SIDE).with(FACING, Direction.SOUTH));
-        world.setBlockState(pos.north(2).east(), state.with(TABLE_PART, TablePart.CENTER_EDGE_SIDE_MIRRORED).with(FACING, Direction.SOUTH));
-        world.setBlockState(pos.south(2).east(), state.with(TABLE_PART, TablePart.CENTER_EDGE_SIDE).with(FACING, Direction.NORTH));
-        world.setBlockState(pos.south(2).west(), state.with(TABLE_PART, TablePart.CENTER_EDGE_SIDE_MIRRORED).with(FACING, Direction.NORTH));
-        world.setBlockState(pos.east(2).north(), state.with(TABLE_PART, TablePart.CENTER_EDGE_SIDE).with(FACING, Direction.WEST));
-        world.setBlockState(pos.east(2).south(), state.with(TABLE_PART, TablePart.CENTER_EDGE_SIDE_MIRRORED).with(FACING, Direction.WEST));
-        world.setBlockState(pos.west(2).south(), state.with(TABLE_PART, TablePart.CENTER_EDGE_SIDE).with(FACING, Direction.EAST));
-        world.setBlockState(pos.west(2).north(), state.with(TABLE_PART, TablePart.CENTER_EDGE_SIDE_MIRRORED).with(FACING, Direction.EAST));
-        world.setBlockState(pos.north(2).west(2), state.with(TABLE_PART, TablePart.CORNER).with(FACING, Direction.SOUTH));
-        world.setBlockState(pos.north(2).east(2), state.with(TABLE_PART, TablePart.CORNER).with(FACING, Direction.WEST));
-        world.setBlockState(pos.south(2).west(2), state.with(TABLE_PART, TablePart.CORNER).with(FACING, Direction.EAST));
-        world.setBlockState(pos.south(2).east(2), state.with(TABLE_PART, TablePart.CORNER).with(FACING, Direction.NORTH));
+        if (state.get(AMONG_US_MAP) == AmongUsMaps.SKELD) {
+            world.setBlockState(pos, state.with(AMONG_US_MAP, AmongUsMaps.SKELD).with(TABLE_PART, TablePart.CENTER).with(TYPE, TableType.BOTTOM));
+        }
 
-        if (state.isOf(ModBlocks.SKELD_CAFETERIA_TABLE)) {
+        if (world.getBlockState(pos).isOf(ModBlocks.SKELD_CAFETERIA_TABLE)) {
+            world.setBlockState(pos.north(), state);
+            world.setBlockState(pos.south(), state);
+            world.setBlockState(pos.east(), state);
+            world.setBlockState(pos.west(), state);
+            world.setBlockState(pos.north().east(), state);
+            world.setBlockState(pos.north().west(), state);
+            world.setBlockState(pos.south().east(), state);
+            world.setBlockState(pos.south().west(), state);
+            world.setBlockState(pos.north(2), state.with(TABLE_PART, TablePart.CENTER_EDGE).with(FACING, Direction.SOUTH));
+            world.setBlockState(pos.south(2), state.with(TABLE_PART, TablePart.CENTER_EDGE).with(FACING, Direction.NORTH));
+            world.setBlockState(pos.east(2), state.with(TABLE_PART, TablePart.CENTER_EDGE).with(FACING, Direction.WEST));
+            world.setBlockState(pos.west(2), state.with(TABLE_PART, TablePart.CENTER_EDGE).with(FACING, Direction.EAST));
+            world.setBlockState(pos.north(2).west(), state.with(TABLE_PART, TablePart.CENTER_EDGE_SIDE).with(FACING, Direction.SOUTH));
+            world.setBlockState(pos.north(2).east(), state.with(TABLE_PART, TablePart.CENTER_EDGE_SIDE_MIRRORED).with(FACING, Direction.SOUTH));
+            world.setBlockState(pos.south(2).east(), state.with(TABLE_PART, TablePart.CENTER_EDGE_SIDE).with(FACING, Direction.NORTH));
+            world.setBlockState(pos.south(2).west(), state.with(TABLE_PART, TablePart.CENTER_EDGE_SIDE_MIRRORED).with(FACING, Direction.NORTH));
+            world.setBlockState(pos.east(2).north(), state.with(TABLE_PART, TablePart.CENTER_EDGE_SIDE).with(FACING, Direction.WEST));
+            world.setBlockState(pos.east(2).south(), state.with(TABLE_PART, TablePart.CENTER_EDGE_SIDE_MIRRORED).with(FACING, Direction.WEST));
+            world.setBlockState(pos.west(2).south(), state.with(TABLE_PART, TablePart.CENTER_EDGE_SIDE).with(FACING, Direction.EAST));
+            world.setBlockState(pos.west(2).north(), state.with(TABLE_PART, TablePart.CENTER_EDGE_SIDE_MIRRORED).with(FACING, Direction.EAST));
+            world.setBlockState(pos.north(2).west(2), state.with(TABLE_PART, TablePart.CORNER).with(FACING, Direction.SOUTH));
+            world.setBlockState(pos.north(2).east(2), state.with(TABLE_PART, TablePart.CORNER).with(FACING, Direction.WEST));
+            world.setBlockState(pos.south(2).west(2), state.with(TABLE_PART, TablePart.CORNER).with(FACING, Direction.EAST));
+            world.setBlockState(pos.south(2).east(2), state.with(TABLE_PART, TablePart.CORNER).with(FACING, Direction.NORTH));
+
+
+
             world.setBlockState(pos.north(3).east(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.SOUTH));
             world.setBlockState(pos.north(4).east(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.NORTH));
             world.setBlockState(pos.north(3).west(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.SOUTH));
             world.setBlockState(pos.north(4).west(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.NORTH));
-
             world.setBlockState(pos.south(4).east(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.SOUTH));
             world.setBlockState(pos.south(3).east(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.NORTH));
             world.setBlockState(pos.south(4).west(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.SOUTH));
             world.setBlockState(pos.south(3).west(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.NORTH));
-
             world.setBlockState(pos.east(3).north(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.WEST));
             world.setBlockState(pos.east(4).north(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.EAST));
             world.setBlockState(pos.east(3).south(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.WEST));
             world.setBlockState(pos.east(4).south(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.EAST));
-
             world.setBlockState(pos.west(4).north(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.WEST));
             world.setBlockState(pos.west(3).north(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.EAST));
             world.setBlockState(pos.west(4).south(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.WEST));
             world.setBlockState(pos.west(3).south(), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.EAST));
-
             world.setBlockState(pos.north(4).east(2), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.NORTH).with(BenchBlock.BENCH_PART, BenchPart.EDGE_CORNERS));
             world.setBlockState(pos.north(4).west(2), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.NORTH).with(BenchBlock.BENCH_PART, BenchPart.EDGE_CORNERS_MIRRORED));
-
             world.setBlockState(pos.south(4).east(2), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.SOUTH).with(BenchBlock.BENCH_PART, BenchPart.EDGE_CORNERS_MIRRORED));
             world.setBlockState(pos.south(4).west(2), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.SOUTH).with(BenchBlock.BENCH_PART, BenchPart.EDGE_CORNERS));
-
             world.setBlockState(pos.east(4).south(2), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.EAST).with(BenchBlock.BENCH_PART, BenchPart.EDGE_CORNERS));
             world.setBlockState(pos.east(4).north(2), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.EAST).with(BenchBlock.BENCH_PART, BenchPart.EDGE_CORNERS_MIRRORED));
-
             world.setBlockState(pos.west(4).north(2), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.WEST).with(BenchBlock.BENCH_PART, BenchPart.EDGE_CORNERS));
             world.setBlockState(pos.west(4).south(2), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.WEST).with(BenchBlock.BENCH_PART, BenchPart.EDGE_CORNERS_MIRRORED));
+            world.setBlockState(pos.north(3).east(2), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.SOUTH).with(BenchBlock.BENCH_PART, BenchPart.EDGE_SIDES));
+            world.setBlockState(pos.north(3).west(2), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.SOUTH).with(BenchBlock.BENCH_PART, BenchPart.EDGE_SIDES_MIRRORED));
+            world.setBlockState(pos.south(3).west(2), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.NORTH).with(BenchBlock.BENCH_PART, BenchPart.EDGE_SIDES));
+            world.setBlockState(pos.south(3).east(2), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.NORTH).with(BenchBlock.BENCH_PART, BenchPart.EDGE_SIDES_MIRRORED));
+            world.setBlockState(pos.west(3).north(2), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.EAST).with(BenchBlock.BENCH_PART, BenchPart.EDGE_SIDES));
+            world.setBlockState(pos.west(3).south(2), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.EAST).with(BenchBlock.BENCH_PART, BenchPart.EDGE_SIDES_MIRRORED));
+            world.setBlockState(pos.east(3).south(2), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.WEST).with(BenchBlock.BENCH_PART, BenchPart.EDGE_SIDES));
+            world.setBlockState(pos.east(3).north(2), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.WEST).with(BenchBlock.BENCH_PART, BenchPart.EDGE_SIDES_MIRRORED));
+            world.setBlockState(pos.north(3).west(3), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.NORTH).with(BenchBlock.BENCH_PART, BenchPart.EDGE_TURNABLE));
+            world.setBlockState(pos.south(3).east(3), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.SOUTH).with(BenchBlock.BENCH_PART, BenchPart.EDGE_TURNABLE));
+            world.setBlockState(pos.north(3).east(3), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.EAST).with(BenchBlock.BENCH_PART, BenchPart.EDGE_TURNABLE));
+            world.setBlockState(pos.south(3).west(3), ModBlocks.SKELD_CAFETERIA_BENCH.getDefaultState().with(FACING, Direction.WEST).with(BenchBlock.BENCH_PART, BenchPart.EDGE_TURNABLE));
         }
     }
 }

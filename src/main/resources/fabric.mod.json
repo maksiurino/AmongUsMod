@@ -36,9 +36,9 @@
 		"fancymenu": "*"
 	},
 	"suggests": {
-		"classicminecrafticon": "*"
+		"another-mod": "*"
 	},
 	"conflicts": {
-		"bettercontrols": "*"
+		"classicminecrafticon": "*"
 	}
 }
