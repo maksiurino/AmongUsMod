@@ -5,7 +5,7 @@
 	"name": "Among Us",
 	"description": "This is an example description! Tell everyone what your mod is about!",
 	"authors": [
-		"Me!"
+		"Maksiuhrino"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
@@ -36,7 +36,8 @@
 		"minecraft": "~1.21.5",
 		"java": ">=21",
 		"fabric-api": "*",
-		"cloth-config": "*"
+		"cloth-config": "*",
+		"modmenu": "*"
 	},
 	"suggests": {
 		"another-mod": "*"

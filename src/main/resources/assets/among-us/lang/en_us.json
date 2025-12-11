@@ -1,9 +1,15 @@
 {
+  "C1": "Item Groups",
   "itemGroup.among-us.skeld_blocks_group": "Among Us Skeld - Building Blocks",
   "itemGroup.among-us.skeld_utils_group": "Among Us Skeld - Utilities",
 
+  "C2": "Blocks",
   "block.among-us.skeld_cafeteria_tiles": "Skeld Cafeteria Tiles",
   "block.among-us.skeld_cafeteria_table": "Skeld Cafeteria Table",
   "block.among-us.emergency_meeting_button": "Emergency Meeting Button",
-  "block.among-us.skeld_cafeteria_bench": "Skeld Cafeteria Bench"
+  "block.among-us.skeld_cafeteria_bench": "Skeld Cafeteria Bench",
+
+  "C3": "Config",
+  "text.autoconfig.among-us.title": "Among Us",
+  "text.autoconfig.among-us.option.player_color": "Player Color"
 }
