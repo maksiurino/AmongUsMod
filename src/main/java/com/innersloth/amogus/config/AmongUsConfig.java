@@ -6,6 +6,7 @@ import me.shedaniel.autoconfig.annotation.ConfigEntry;
 
 @Config(name = "among-us")
 public class AmongUsConfig implements ConfigData {
+    public boolean showDisabledRunningMessages = false;
     @ConfigEntry.ColorPicker
-    int player_color = 0xFFFFFF;
+    public int player_color = 0xFFFFFF;
 }

@@ -3,6 +3,7 @@ package com.innersloth.amogus.block.custom;
 import com.innersloth.amogus.block.custom.enums.AmongUsMaps;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
+import net.minecraft.client.option.KeyBinding;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.sound.SoundCategory;
@@ -54,6 +55,10 @@ public class EmergencyMeetingButtonBlock extends TransparentHorizontalFacingBloc
     @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
         if (!world.isClient) {
+            if (state.get(PRESSED) && (player.isSneaking() || player.isInSneakingPose())) {
+                world.playSound(player, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS);
+                return ActionResult.SUCCESS;
+            }
             world.setBlockState(pos, state.cycle(PRESSED));
         }
         world.playSound(player, pos, state.get(PRESSED) ? SoundEvents.BLOCK_STONE_BUTTON_CLICK_OFF : SoundEvents.BLOCK_STONE_BUTTON_CLICK_ON, SoundCategory.BLOCKS);

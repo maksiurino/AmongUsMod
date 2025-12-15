@@ -4,6 +4,8 @@ import com.innersloth.amogus.block.custom.BenchBlock;
 import com.innersloth.amogus.block.custom.EmergencyMeetingButtonBlock;
 import com.innersloth.amogus.block.custom.FloorBlock;
 import com.innersloth.amogus.block.custom.TableBlock;
+import com.innersloth.amogus.config.AmongUsConfig;
+import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.block.Block;
 import net.minecraft.network.packet.c2s.play.ClientCommandC2SPacket;
 import net.minecraft.server.network.ServerPlayNetworkHandler;
@@ -14,8 +16,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import com.innersloth.amogus.AmongUsOptions;
-import com.innersloth.amogus.util.ModGameRules;
 
 @Mixin(ServerPlayNetworkHandler.class)
 public class ServerPlayNetworkHandlerMixin {
@@ -37,7 +37,7 @@ public class ServerPlayNetworkHandlerMixin {
                     mode == ClientCommandC2SPacket.Mode.RELEASE_SHIFT_KEY) {
 
                 ci.cancel();
-                if (ModGameRules.SHOW_DISABLED_RUNNING_DIALOGUE.equals(true)) {
+                if (AutoConfig.getConfigHolder(AmongUsConfig.class).getConfig().showDisabledRunningMessages) {
                     player.sendMessage(Text.of("Stop sneaking/sprinting!"));
                 }
             }

@@ -6,7 +6,8 @@
 		"ServerPlayNetworkHandlerMixin",
 		"MixinTitleScreen",
 		"ScreenAccessor",
-		"ButtonWidgetAccessor"
+		"ButtonWidgetAccessor",
+		"MixinLogoDrawer"
 	],
 	"injectors": {
 		"defaultRequire": 1

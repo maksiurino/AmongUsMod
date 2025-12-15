@@ -11,5 +11,10 @@
 
   "C3": "Config",
   "text.autoconfig.among-us.title": "Among Us",
-  "text.autoconfig.among-us.option.player_color": "Player Color"
+  "text.autoconfig.among-us.option.player_color": "Player Color",
+
+  "C4": "Vanilla Stuff",
+  "menu.quit": "Quit",
+  "menu.options": "Settings",
+  "options.title": "Settings"
 }
